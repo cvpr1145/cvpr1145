@@ -1,2 +1,1 @@
-# 1776
-Simple Latent Uncertainty Representation
+# Simple Latent Uncertainty Representation
