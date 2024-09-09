@@ -8,7 +8,7 @@ Deep neural networks (DNNs) are effective for video recognition and driving auto
 
 ### TLDR
 
-![project](./src/LUR.pdf)
+![lur](./src/lur.png)
 The introduction of trainable projection layers and guiding the learning of the projected latent representations  
 
 
