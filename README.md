@@ -1,6 +1,6 @@
 # Simple Latent Uncertainty Representation
 
-### [Project Page](#) | [Example Notebooks](#) | [NuScenes driving action and driver intention Labels](#)
+### [Project Page](#) | [Example Notebooks](#) | [NuScenes labels](#)
 
 
 ## Implementation
