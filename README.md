@@ -13,12 +13,10 @@ class MLP(nn.Module):
     def __init__(self, in_features, out_features):
         super().__init__()
         self.out_features = out_features
-
         self.input = nn.Linear(in_features, 8)
         self.hidden1 = nn.Linear(8, 16)
         self.hidden2 = nn.Linear(16, 8)
         self.output = nn.Linear(8, out_features)
-      
         self.activation = nn.ReLU()
 
     def forward(self, x, y=None):
@@ -36,13 +34,10 @@ class LUR_MLP(nn.Module):
                  num_projections):
         super().__init__()
         self.out_features = out_features
-
-        # Modifying the first layer
         self.input = nn.Linear(in_features, 8)
         self.hidden1 = nn.Linear(8, 16)
         self.hidden2 = nn.Linear(16, 8)
         self.projections = nn.ModuleList([nn.Linear(8, 8) for _ in range(num_projections)])
-        
         self.output = nn.Linear(8, out_features)
         self.activation = nn.ReLU()
 
@@ -54,9 +49,12 @@ class LUR_MLP(nn.Module):
 
         for i, proj in enumerate(self.projections):
             z_p = self.activation(proj(z))
+            z_representations.append(z_p)
             y_projections.append(self.head(z_p))
 
         y = self.output(z)
- 
-        return y, y_projections 
+        if self.training:
+            return y, y_projections, z_representations
+        else:
+            return y, y_projections 
 ```
