@@ -19,7 +19,6 @@ Integrating LUR into standard models is simple, and requires adding the projecti
 class MLP(nn.Module):
     def __init__(self, in_features, out_features):
         super().__init__()
-        self.out_features = out_features
         self.input = nn.Linear(in_features, 8)
         self.hidden1 = nn.Linear(8, 16)
         self.hidden2 = nn.Linear(16, 8)
@@ -40,7 +39,6 @@ class LUR_MLP(nn.Module):
                  out_features,
                  num_projections):
         super().__init__()
-        self.out_features = out_features
         self.input = nn.Linear(in_features, 8)
         self.hidden1 = nn.Linear(8, 16)
         self.hidden2 = nn.Linear(16, 8)
@@ -64,4 +62,9 @@ class LUR_MLP(nn.Module):
             return y, y_projections, z_representations
         else:
             return y, y_projections 
+```
+
+**LUR loss function intuition:**
+```python
+loss = criterion(input=pred, target=labels) + (lambda_zproj_loss * torch.stack([criterion(pred, labels) for pred in y_projections]).mean()) + (args.lambda_kl * kl_div) 
 ```
