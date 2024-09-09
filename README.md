@@ -2,7 +2,6 @@
 
 ### [Project Page](#) | [Example Notebooks](#) | [NuScenes driving action and driver intention Labels](#)
 
-> **For a quick tryout of the ZigZag method, check the Colab notebooks below!**
 
 ## Implementation
 Integrating LUR into standard models is simple, and requires adding the projection layers and updating the forward pass. 
