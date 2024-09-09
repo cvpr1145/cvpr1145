@@ -1,6 +1,6 @@
 # Simple Latent Uncertainty Representation
 
-### [Standard benchmarks](/benchmarks/readme.md) | [LUR implementation](#implementation) | [NuScenes labels](#)
+### [Standard benchmarks](/benchmarks/readme.md) | [LUR implementation](#implementation) | [NuScenes labels](/nuscenes/readme.md)
 > **For a toy-regression, boston housing example or MNIST out-of-distribution benchmarks, check the benchmarks folders**
 
 ### Abstract
