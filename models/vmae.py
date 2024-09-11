@@ -64,7 +64,7 @@ class AttentionFusionModule(nn.Module):
         return fused
 
 
-class LRUQ_VMAE(torch.nn.Module):
+class VMAE(torch.nn.Module):
     def __init__(self, 
                  args,
                  model_dim=768,
