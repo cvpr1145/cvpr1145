@@ -66,5 +66,5 @@ class LUR_MLP(nn.Module):
 
 **LUR loss function intuition:**
 ```python
-loss = criterion(input=pred, target=labels) + (lambda_zproj_loss * torch.stack([criterion(pred, labels) for pred in y_projections]).mean()) + (lambda_kl * kl_div) 
+loss = criterion(input=pred, target=labels) + (lambda_zproj_loss * torch.stack([criterion(pred, labels) for pred in y_projections]).sum()) + (lambda_kl * kl_div) 
 ```
