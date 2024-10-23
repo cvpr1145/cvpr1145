@@ -6,8 +6,11 @@
 ### Paper Abstract
 Deep neural networks (DNNs) are effective for video recognition and driving automation tasks but face challenges in safety-critical applications given their inability to express uncertainty. We propose a simple latent uncertainty representation (LUR) framework. LUR is a deterministic uncertainty estimation approach that does not require alterations to existing DNN components. We assess the impact of the number of projected latent representations and explore various strategies for learning these representations. We report state-of-the-art performance for the video-based AIDE driver action recognition and for the Brain4Cars driver intention recognition (DIR) benchmarks, and introduce a new DIR benchmark for the NuScenes dataset. Additionally, we introduce out-of-distribution benchmarks for each of the datasets. The top-performing LUR models match and occasionally surpass the performance of sampling, ensemble, and deterministic probabilistic deep learning methods.
 
+![lur](./src/lur.png)
+
 ### TLDR:
 The introduction of trainable projection layers and updating the loss function to guide the learning of the projected latent representations can enable a regular DNN to produce uncertainty estimates.  
+
 
 
 ## Implementation
