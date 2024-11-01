@@ -4,7 +4,7 @@
 > **For a toy-regression, boston housing example or MNIST out-of-distribution benchmarks, check the benchmarks folders**
 
 ### Paper Abstract
-Deep neural networks (DNNs) are effective for video recognition and driving automation tasks but face challenges in safety-critical applications given their inability to express uncertainty. We propose a simple latent uncertainty representation (LUR) framework. LUR is a deterministic uncertainty estimation approach that does not require alterations to existing DNN components. We assess the impact of the number of projected latent representations and explore various strategies for learning these representations. We report state-of-the-art performance for the video-based AIDE driver action recognition and for the Brain4Cars driver intention recognition (DIR) benchmarks, and introduce a new DIR benchmark for the NuScenes dataset. Additionally, we introduce out-of-distribution benchmarks for each of the datasets. The top-performing LUR models match and occasionally surpass the performance of sampling, ensemble, and deterministic probabilistic deep learning methods.
+Deep neural networks (DNNs) are effective for video recognition and driving automation tasks but face challenges in safety-critical applications given their inability to express uncertainty. We propose a simple latent uncertainty representation (LUR) framework. LUR is a deterministic uncertainty estimation approach that does not require alterations to existing DNN components. We assess the impact of the number of projected latent representations and explore various strategies for learning these representations. We report state-of-the-art performance for the video-based AIDE driver action recognition and for the Brain4Cars driver intention recognition (DIR) benchmarks, and introduce a new DIR benchmark for the NuScenes dataset. Additionally, we introduce out-of-distribution benchmarks for each of the datasets. The top-performing LUR models match and occasionally surpass the performance of sampling, ensemble, and deterministic probabilistic deep learning methods. 
 
 ![lur](./src/lur.png)
 
@@ -14,7 +14,7 @@ The introduction of trainable projection layers and updating the loss function t
 
 
 ## Implementation
-Integrating LUR into standard models is simple, and requires adding the projection layers and updating the forward pass. 
+Integrating LUR into standard models is simple, and only requires adding the projection layers, updating the forward pass and the loss function to guide the training. 
 
 **Original architecture:**
 ```python 
@@ -49,11 +49,11 @@ class LUR_MLP(nn.Module):
         self.activation = nn.ReLU()
 
     def forward(self, x):
-        z_representations, y_projections = [], []
         x = self.activation(self.input(x))
         z = self.activation(self.hidden1(x))
         z = self.activation(self.hidden2(x))
 
+        z_representations, y_projections = [], []
         for i, proj in enumerate(self.projections):
             z_p = self.activation(proj(z))
             z_representations.append(z_p)
